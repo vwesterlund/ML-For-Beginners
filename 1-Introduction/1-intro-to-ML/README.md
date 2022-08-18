@@ -19,6 +19,7 @@ Welcome to this course on classical machine learning for beginners! Whether you'
 > 🎥 Click the image above for a video: MIT's John Guttag introduces machine learning
 
 ---
+
 ## Getting started with machine learning
 
 Before starting with this curriculum, you need to have your computer set up and ready to run notebooks locally.
@@ -30,6 +31,7 @@ Before starting with this curriculum, you need to have your computer set up and 
 - **Explore Scikit-learn**. Familiarize yourself with [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), a set of ML libraries that we reference in these lessons.
 
 ---
+
 ## What is machine learning?
 
 The term 'machine learning' is one of the most popular and frequently used terms of today. There is a nontrivial possibility that you have heard this term at least once if you have some sort of familiarity with technology, no matter what domain you work in. The mechanics of machine learning, however, are a mystery to most people. For a machine learning beginner, the subject can sometimes feel overwhelming. Therefore, it is important to understand what machine learning actually is, and to learn about it step by step, through practical examples.
