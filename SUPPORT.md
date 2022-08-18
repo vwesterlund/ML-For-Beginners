@@ -7,6 +7,3 @@ feature request as a new Issue.
 
 For help and questions about using this project, file an issue.
 
-## Microsoft Support Policy  
-
-Support for this repository is limited to the resources listed above.
