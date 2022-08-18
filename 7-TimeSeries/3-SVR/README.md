@@ -22,7 +22,7 @@ In the last lesson you learned about ARIMA, which is a very successful statistic
 
 ## Exercise - build an SVR model
 
-The first few steps for data preparation are the same as that of the previous lesson on [ARIMA](https://github.com/microsoft/ML-For-Beginners/tree/main/7-TimeSeries/2-ARIMA). 
+The first few steps for data preparation are the same as that of the previous lesson on [ARIMA](https://github.com/SMC-AAU-CPH/ML-For-Beginners/tree/main/7-TimeSeries/2-ARIMA). 
 
 Open the _/working_ folder in this lesson and find the _notebook.ipynb_ file.[^2]
 
@@ -383,4 +383,4 @@ This lesson was to introduce the application of SVR for Time Series Forecasting.
 
 
 [^1]: The text, code and output in this section was contributed by [@AnirbanMukherjeeXD](https://github.com/AnirbanMukherjeeXD)
-[^2]: The text, code and output in this section was taken from [ARIMA](https://github.com/microsoft/ML-For-Beginners/tree/main/7-TimeSeries/2-ARIMA)
+[^2]: The text, code and output in this section was taken from [ARIMA](https://github.com/SMC-AAU-CPH/ML-For-Beginners/tree/main/7-TimeSeries/2-ARIMA)

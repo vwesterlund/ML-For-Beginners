@@ -11,4 +11,4 @@ Now that you have built an SVR model, build a new one with fresh data (try one o
 
 
 
-[^1]:The text in this section was based on the [assignment from ARIMA](https://github.com/microsoft/ML-For-Beginners/tree/main/7-TimeSeries/2-ARIMA/assignment.md)
+[^1]:The text in this section was based on the [assignment from ARIMA](https://github.com/SMC-AAU-CPH/ML-For-Beginners/tree/main/7-TimeSeries/2-ARIMA/assignment.md)

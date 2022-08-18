@@ -12,7 +12,11 @@ Watch the video, then take the pre-lesson quiz
 
 ---
 
-Welcome to this course on classical machine learning for beginners! Whether you're completely new to this topic, or an experienced ML practitioner looking to brush up on an area, we're happy to have you join us! We want to create a friendly launching spot for your ML study and would be happy to evaluate, respond to, and incorporate your [feedback](https://github.com/microsoft/ML-For-Beginners/discussions).
+Welcome to this course on classical machine learning! Whether you're completely new to this topic, or an experienced ML practitioner looking to brush up on an area, we're happy to have you join us! Your course organizers are [Cumhur Erkut](https://cerkut.github.io/), [Henrique G Debarba](mailto:hgd@create.aau.dk) and [George Palamas]()
+
+We want to create a launching spot for your ML study
+
+, respond to, and incorporate your [feedback](https://github.com/SMC-AAU-CPH/ML-For-Beginners/discussions).
 
 [![Introduction to ML](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Introduction to ML")
 
