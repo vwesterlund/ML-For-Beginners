@@ -1,14 +1,14 @@
 # Logistic regression to predict categories
 
 ![Logistic vs. linear regression infographic](./images/logistic-linear.png)
-> Infographic by [Dasani Madipalli](https://twitter.com/dasani_decoded)
-## [Pre-lecture quiz](https://gray-sand-07a10f403.1.azurestaticapps.net/quiz/15/)
 
-> ### [This lesson is available in R!](./solution/R/lesson_4-R.ipynb)
+> Infographic by [Dasani Madipalli](https://twitter.com/dasani_decoded)
+
+## [Pre-lecture quiz](https://gray-sand-07a10f403.1.azurestaticapps.net/quiz/15/)
 
 ## Introduction
 
-In this final lesson on Regression, one of the basic _classic_ ML techniques, we will take a look at Logistic Regression. You would use this technique to discover patterns to predict binary categories. Is this candy chocolate or not? Is this disease contagious or not? Will this customer choose this product or not? 
+In this final lesson on Regression, one of the basic _classic_ ML techniques, we will take a look at Logistic Regression. You would use this technique to discover patterns to predict binary categories. Is this candy chocolate or not? Is this disease contagious or not? Will this customer choose this product or not?
 
 In this lesson, you will learn:
 
@@ -16,6 +16,7 @@ In this lesson, you will learn:
 - Techniques for logistic regression
 
 ✅ Deepen your understanding of working with this type of regression in this [Learn module](https://docs.microsoft.com/learn/modules/train-evaluate-classification-models?WT.mc_id=academic-15963-cxa)
+
 ## Prerequisite
 
 Having worked with the pumpkin data, we are now familiar enough with it to realize that there's one binary category that we can work with: `Color`.
@@ -39,7 +40,9 @@ Logistic regression differs from linear regression, which you learned about prev
 Logistic regression does not offer the same features as linear regression. The former offers a prediction about a binary category ("orange or not orange") whereas the latter is capable of predicting continual values, for example given the origin of a pumpkin and the time of harvest, _how much its price will rise_.
 
 ![Pumpkin classification Model](./images/pumpkin-classifier.png)
+
 > Infographic by [Dasani Madipalli](https://twitter.com/dasani_decoded)
+
 ### Other classifications
 
 There are other types of logistic regression, including multinomial and ordinal:
@@ -48,6 +51,7 @@ There are other types of logistic regression, including multinomial and ordinal:
 - **Ordinal**, which involves ordered categories, useful if we wanted to order our outcomes logically, like our pumpkins that are ordered by a finite number of sizes (mini,sm,med,lg,xl,xxl).
 
 ![Multinomial vs ordinal regression](./images/multinomial-ordinal.png)
+
 > Infographic by [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
 ### It's still linear
@@ -70,58 +74,58 @@ First, clean the data a bit, dropping null values and selecting only some of the
 
 1. Add the following code:
 
-    ```python
-    from sklearn.preprocessing import LabelEncoder
-    
-    new_columns = ['Color','Origin','Item Size','Variety','City Name','Package']
-    
-    new_pumpkins = pumpkins.drop([c for c in pumpkins.columns if c not in new_columns], axis=1)
-    
-    new_pumpkins.dropna(inplace=True)
-    
-    new_pumpkins = new_pumpkins.apply(LabelEncoder().fit_transform)
-    ```
+   ```python
+   from sklearn.preprocessing import LabelEncoder
 
-    You can always take a peek at your new dataframe:
+   new_columns = ['Color','Origin','Item Size','Variety','City Name','Package']
 
-    ```python
-    new_pumpkins.info
-    ```
+   new_pumpkins = pumpkins.drop([c for c in pumpkins.columns if c not in new_columns], axis=1)
+
+   new_pumpkins.dropna(inplace=True)
+
+   new_pumpkins = new_pumpkins.apply(LabelEncoder().fit_transform)
+   ```
+
+   You can always take a peek at your new dataframe:
+
+   ```python
+   new_pumpkins.info
+   ```
 
 ### Visualization - side-by-side grid
 
-By now you have loaded up the [starter notebook](./notebook.ipynb) with pumpkin data once again and cleaned it so as to preserve a dataset containing a few variables, including `Color`. Let's visualize the dataframe in the notebook using a different library: [Seaborn](https://seaborn.pydata.org/index.html), which is built on Matplotlib which we used earlier. 
+By now you have loaded up the [starter notebook](./notebook.ipynb) with pumpkin data once again and cleaned it so as to preserve a dataset containing a few variables, including `Color`. Let's visualize the dataframe in the notebook using a different library: [Seaborn](https://seaborn.pydata.org/index.html), which is built on Matplotlib which we used earlier.
 
 Seaborn offers some neat ways to visualize your data. For example, you can compare distributions of the data for each point in a side-by-side grid.
 
 1. Create such a grid by instantiating a `PairGrid`, using our pumpkin data `new_pumpkins`, followed by calling `map()`:
 
-    ```python
-    import seaborn as sns
-    
-    g = sns.PairGrid(new_pumpkins)
-    g.map(sns.scatterplot)
-    ```
+   ```python
+   import seaborn as sns
 
-    ![A grid of visualized data](images/grid.png)
+   g = sns.PairGrid(new_pumpkins)
+   g.map(sns.scatterplot)
+   ```
 
-    By observing data side-by-side, you can see how the Color data relates to the other columns.
+   ![A grid of visualized data](images/grid.png)
 
-    ✅ Given this scatterplot grid, what are some interesting explorations you can envision?
+   By observing data side-by-side, you can see how the Color data relates to the other columns.
+
+   ✅ Given this scatterplot grid, what are some interesting explorations you can envision?
 
 ### Use a swarm plot
 
-Since Color is a binary category (Orange or Not), it's called 'categorical data' and needs 'a more [specialized approach](https://seaborn.pydata.org/tutorial/categorical.html?highlight=bar) to visualization'. There are other ways to visualize the relationship of this category with other variables. 
+Since Color is a binary category (Orange or Not), it's called 'categorical data' and needs 'a more [specialized approach](https://seaborn.pydata.org/tutorial/categorical.html?highlight=bar) to visualization'. There are other ways to visualize the relationship of this category with other variables.
 
 You can visualize variables side-by-side with Seaborn plots.
 
 1. Try a 'swarm' plot to show the distribution of values:
 
-    ```python
-    sns.swarmplot(x="Color", y="Item Size", data=new_pumpkins)
-    ```
+   ```python
+   sns.swarmplot(x="Color", y="Item Size", data=new_pumpkins)
+   ```
 
-    ![A swarm of visualized data](images/swarm.png)
+   ![A swarm of visualized data](images/swarm.png)
 
 ### Violin plot
 
@@ -129,14 +133,14 @@ A 'violin' type plot is useful as you can easily visualize the way that data in 
 
 1. As parameters `x=Color`, `kind="violin"` and call `catplot()`:
 
-    ```python
-    sns.catplot(x="Color", y="Item Size",
-                kind="violin", data=new_pumpkins)
-    ```
+   ```python
+   sns.catplot(x="Color", y="Item Size",
+               kind="violin", data=new_pumpkins)
+   ```
 
-    ![a violin type chart](images/violin.png)
+   ![a violin type chart](images/violin.png)
 
-    ✅ Try creating this plot, and other Seaborn plots, using other variables.
+   ✅ Try creating this plot, and other Seaborn plots, using other variables.
 
 Now that we have an idea of the relationship between the binary categories of color and the larger group of sizes, let's explore logistic regression to determine a given pumpkin's likely color.
 
@@ -154,53 +158,52 @@ Building a model to find these binary classification is surprisingly straightfor
 
 1. Select the variables you want to use in your classification model and split the training and test sets calling `train_test_split()`:
 
-    ```python
-    from sklearn.model_selection import train_test_split
-    
-    Selected_features = ['Origin','Item Size','Variety','City Name','Package']
-    
-    X = new_pumpkins[Selected_features]
-    y = new_pumpkins['Color']
-    
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-    
-    ```
+   ```python
+   from sklearn.model_selection import train_test_split
 
-1. Now you can train your model, by calling `fit()` with your training data, and print out its result:
+   Selected_features = ['Origin','Item Size','Variety','City Name','Package']
 
-    ```python
-    from sklearn.model_selection import train_test_split
-    from sklearn.metrics import accuracy_score, classification_report 
-    from sklearn.linear_model import LogisticRegression
-    
-    model = LogisticRegression()
-    model.fit(X_train, y_train)
-    predictions = model.predict(X_test)
-    
-    print(classification_report(y_test, predictions))
-    print('Predicted labels: ', predictions)
-    print('Accuracy: ', accuracy_score(y_test, predictions))
-    ```
+   X = new_pumpkins[Selected_features]
+   y = new_pumpkins['Color']
 
-    Take a look at your model's scoreboard. It's not too bad, considering you have only about 1000 rows of data:
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-    ```output
-                       precision    recall  f1-score   support
-    
-               0       0.85      0.95      0.90       166
-               1       0.38      0.15      0.22        33
-    
-        accuracy                           0.82       199
-       macro avg       0.62      0.55      0.56       199
-    weighted avg       0.77      0.82      0.78       199
-    
-    Predicted labels:  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
-     0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-     1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1
-     0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1
-     0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-     0 0 0 1 0 1 0 0 1 0 0 0 1 0]
-    ```
+   ```
+2. Now you can train your model, by calling `fit()` with your training data, and print out its result:
+
+   ```python
+   from sklearn.model_selection import train_test_split
+   from sklearn.metrics import accuracy_score, classification_report 
+   from sklearn.linear_model import LogisticRegression
+
+   model = LogisticRegression()
+   model.fit(X_train, y_train)
+   predictions = model.predict(X_test)
+
+   print(classification_report(y_test, predictions))
+   print('Predicted labels: ', predictions)
+   print('Accuracy: ', accuracy_score(y_test, predictions))
+   ```
+
+   Take a look at your model's scoreboard. It's not too bad, considering you have only about 1000 rows of data:
+
+   ```output
+                      precision    recall  f1-score   support
+
+              0       0.85      0.95      0.90       166
+              1       0.38      0.15      0.22        33
+
+       accuracy                           0.82       199
+      macro avg       0.62      0.55      0.56       199
+   weighted avg       0.77      0.82      0.78       199
+
+   Predicted labels:  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+    0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 0 0 1 0 1 0 0 1 0 0 0 1 0]
+   ```
 
 ## Better comprehension via a confusion matrix
 
@@ -210,30 +213,30 @@ While you can get a scoreboard report [terms](https://scikit-learn.org/stable/mo
 
 1. To use a confusion metrics, call `confusion_matrix()`:
 
-    ```python
-    from sklearn.metrics import confusion_matrix
-    confusion_matrix(y_test, predictions)
-    ```
+   ```python
+   from sklearn.metrics import confusion_matrix
+   confusion_matrix(y_test, predictions)
+   ```
 
-    Take a look at your model's confusion matrix:
+   Take a look at your model's confusion matrix:
 
-    ```output
-    array([[162,   4],
-           [ 33,   0]])
-    ```
+   ```output
+   array([[162,   4],
+          [ 33,   0]])
+   ```
 
 In Scikit-learn, confusion matrices Rows (axis 0) are actual labels and columns (axis 1) are predicted labels.
 
-|       |   0   |   1   |
-| :---: | :---: | :---: |
-|   0   |  TN   |  FP   |
-|   1   |  FN   |  TP   |
+|  | 0 | 1 |
+| :-: | :-: | :-: |
+| 0 | TN | FP |
+| 1 | FN | TP |
 
 What's going on here? Let's say our model is asked to classify pumpkins between two binary categories, category 'orange' and category 'not-orange'.
 
 - If your model predicts a pumpkin as not orange and it belongs to category 'not-orange' in reality we call it a true negative, shown by the top left number.
-- If your model predicts a pumpkin as orange and it belongs to category 'not-orange' in reality we call it a false negative, shown by the bottom left number. 
-- If your model predicts a pumpkin as not orange and it belongs to category 'orange' in reality we call it a false positive, shown by the top right number. 
+- If your model predicts a pumpkin as orange and it belongs to category 'not-orange' in reality we call it a false negative, shown by the bottom left number.
+- If your model predicts a pumpkin as not orange and it belongs to category 'orange' in reality we call it a false positive, shown by the top right number.
 - If your model predicts a pumpkin as orange and it belongs to category 'orange' in reality we call it a true positive, shown by the bottom right number.
 
 As you might have guessed it's preferable to have a larger number of true positives and true negatives and a lower number of false positives and false negatives, which implies that the model performs better.
@@ -244,7 +247,7 @@ Precision = tp / (tp + fp) = 162 / (162 + 33) = 0.8307692307692308
 
 Recall = tp / (tp + fn) = 162 / (162 + 4) = 0.9759036144578314
 
-✅ Q: According to the confusion matrix, how did the model do? A: Not too bad; there are a good number of true negatives but also several false negatives. 
+✅ Q: According to the confusion matrix, how did the model do? A: Not too bad; there are a good number of true negatives but also several false negatives.
 
 Let's revisit the terms we saw earlier with the help of the confusion matrix's mapping of TP/TN and FP/FN:
 
@@ -279,6 +282,7 @@ fpr, tpr, thresholds = roc_curve(y_test, y_scores[:,1])
 sns.lineplot([0, 1], [0, 1])
 sns.lineplot(fpr, tpr)
 ```
+
 Using Seaborn again, plot the model's [Receiving Operating Characteristic](https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html?highlight=roc) or ROC. ROC curves are often used to get a view of the output of a classifier in terms of its true vs. false positives. "ROC curves typically feature true positive rate on the Y axis, and false positive rate on the X axis." Thus, the steepness of the curve and the space between the midpoint line and the curve matter: you want a curve that quickly heads up and over the line. In our case, there are false positives to start with, and then the line heads up and over properly:
 
 ![ROC](./images/ROC.png)
@@ -289,11 +293,13 @@ Finally, use Scikit-learn's [`roc_auc_score` API](https://scikit-learn.org/stabl
 auc = roc_auc_score(y_test,y_scores[:,1])
 print(auc)
 ```
-The result is `0.6976998904709748`. Given that the AUC ranges from 0 to 1, you want a big score, since a model that is 100% correct in its predictions will have an AUC of 1; in this case, the model is _pretty good_. 
+
+The result is `0.6976998904709748`. Given that the AUC ranges from 0 to 1, you want a big score, since a model that is 100% correct in its predictions will have an AUC of 1; in this case, the model is _pretty good_.
 
 In future lessons on classifications, you will learn how to iterate to improve your model's scores. But for now, congratulations! You've completed these regression lessons!
 
 ---
+
 ## 🚀Challenge
 
 There's a lot more to unpack regarding logistic regression! But the best way to learn is to experiment. Find a dataset that lends itself to this type of analysis and build a model with it. What do you learn? tip: try [Kaggle](https://www.kaggle.com/search?q=logistic+regression+datasets) for interesting datasets.
@@ -304,6 +310,6 @@ There's a lot more to unpack regarding logistic regression! But the best way to 
 
 Read the first few pages of [this paper from Stanford](https://web.stanford.edu/~jurafsky/slp3/5.pdf) on some practical uses for logistic regression. Think about tasks that are better suited for one or the other type of regression tasks that we have studied up to this point. What would work best?
 
-## Assignment 
+## Assignment
 
 [Retrying this regression](assignment.md)

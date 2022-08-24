@@ -6,8 +6,6 @@ Infographic by [Dasani Madipalli](https://twitter.com/dasani_decoded)
 
 ## [Pre-lecture quiz](https://gray-sand-07a10f403.1.azurestaticapps.net/quiz/11/)
 
-> ### [This lesson is available in R!](./solution/R/lesson_2-R.ipynb)
-
 ## Introduction
 
 Now that you are set up with the tools you need to start tackling machine learning model building with Scikit-learn, you are ready to start asking questions of your data. As you work with data and apply ML solutions, it's very important to understand how to ask the right question to properly unlock the potentials of your dataset.
@@ -18,8 +16,8 @@ In this lesson, you will learn:
 - How to use Matplotlib for data visualization.
 
 [![Preparing and Visualizing data](https://img.youtube.com/vi/11AnOn_OAcE/0.jpg)](https://youtu.be/11AnOn_OAcE "Preparing and Visualizing data video - Click to Watch!")
-> 🎥 Click the image above for a video covering key aspects of this lesson
 
+> 🎥 Click the image above for a video covering key aspects of this lesson
 
 ## Asking the right question of your data
 
@@ -42,6 +40,7 @@ This data is in the public domain. It can be downloaded in many separate files, 
 What do you notice about this data? You already saw that there is a mix of strings, numbers, blanks and strange values that you need to make sense of.
 
 What question can you ask of this data, using a Regression technique? What about "Predict the price of a pumpkin for sale during a given month". Looking again at the data, there are some changes you need to make to create the data structure necessary for the task.
+
 ## Exercise - analyze the pumpkin data
 
 Let's use [Pandas](https://pandas.pydata.org/), (the name stands for `Python Data Analysis`) a tool very useful for shaping data, to analyze and prepare this pumpkin data.
@@ -57,28 +56,26 @@ Open the _notebook.ipynb_ file in Visual Studio Code and import the spreadsheet 
 
 1. Use the `head()` function to view the first five rows.
 
-    ```python
-    import pandas as pd
-    pumpkins = pd.read_csv('../data/US-pumpkins.csv')
-    pumpkins.head()
-    ```
+   ```python
+   import pandas as pd
+   pumpkins = pd.read_csv('../data/US-pumpkins.csv')
+   pumpkins.head()
+   ```
 
-    ✅ What function would you use to view the last five rows?
+   ✅ What function would you use to view the last five rows?
+2. Check if there is missing data in the current dataframe:
 
-1. Check if there is missing data in the current dataframe:
+   ```python
+   pumpkins.isnull().sum()
+   ```
 
-    ```python
-    pumpkins.isnull().sum()
-    ```
+   There is missing data, but maybe it won't matter for the task at hand.
+3. To make your dataframe easier to work with, drop several of its columns, using `drop()`, keeping only the columns you need:
 
-    There is missing data, but maybe it won't matter for the task at hand.
-
-1. To make your dataframe easier to work with, drop several of its columns, using `drop()`, keeping only the columns you need:
-
-    ```python
-    new_columns = ['Package', 'Month', 'Low Price', 'High Price', 'Date']
-    pumpkins = pumpkins.drop([c for c in pumpkins.columns if c not in new_columns], axis=1)
-    ```
+   ```python
+   new_columns = ['Package', 'Month', 'Low Price', 'High Price', 'Date']
+   pumpkins = pumpkins.drop([c for c in pumpkins.columns if c not in new_columns], axis=1)
+   ```
 
 ### Second, determine average price of pumpkin
 
@@ -88,22 +85,21 @@ Solution: take the average of the `Low Price` and `High Price` columns to popula
 
 1. To calculate the average, add the following code:
 
-    ```python
-    price = (pumpkins['Low Price'] + pumpkins['High Price']) / 2
+   ```python
+   price = (pumpkins['Low Price'] + pumpkins['High Price']) / 2
 
-    month = pd.DatetimeIndex(pumpkins['Date']).month
+   month = pd.DatetimeIndex(pumpkins['Date']).month
 
-    ```
+   ```
 
    ✅ Feel free to print any data you'd like to check using `print(month)`.
-
 2. Now, copy your converted data into a fresh Pandas dataframe:
 
-    ```python
-    new_pumpkins = pd.DataFrame({'Month': month, 'Package': pumpkins['Package'], 'Low Price': pumpkins['Low Price'],'High Price': pumpkins['High Price'], 'Price': price})
-    ```
+   ```python
+   new_pumpkins = pd.DataFrame({'Month': month, 'Package': pumpkins['Package'], 'Low Price': pumpkins['Low Price'],'High Price': pumpkins['High Price'], 'Price': price})
+   ```
 
-    Printing out your dataframe will show you a clean, tidy dataset on which you can build your new regression model.
+   Printing out your dataframe will show you a clean, tidy dataset on which you can build your new regression model.
 
 ### But wait! There's something odd here
 
@@ -115,11 +111,11 @@ Digging into the original data, it's interesting that anything with `Unit of Sal
 
 1. Add a filter at the top of the file, under the initial .csv import:
 
-    ```python
-    pumpkins = pumpkins[pumpkins['Package'].str.contains('bushel', case=True, regex=True)]
-    ```
+   ```python
+   pumpkins = pumpkins[pumpkins['Package'].str.contains('bushel', case=True, regex=True)]
+   ```
 
-    If you print the data now, you can see that you are only getting the 415 or so rows of data containing pumpkins by the bushel.
+   If you print the data now, you can see that you are only getting the 415 or so rows of data containing pumpkins by the bushel.
 
 ### But wait! There's one more thing to do
 
@@ -127,11 +123,11 @@ Did you notice that the bushel amount varies per row? You need to normalize the 
 
 1. Add these lines after the block creating the new_pumpkins dataframe:
 
-    ```python
-    new_pumpkins.loc[new_pumpkins['Package'].str.contains('1 1/9'), 'Price'] = price/(1 + 1/9)
+   ```python
+   new_pumpkins.loc[new_pumpkins['Package'].str.contains('1 1/9'), 'Price'] = price/(1 + 1/9)
 
-    new_pumpkins.loc[new_pumpkins['Package'].str.contains('1/2'), 'Price'] = price/(1/2)
-    ```
+   new_pumpkins.loc[new_pumpkins['Package'].str.contains('1/2'), 'Price'] = price/(1/2)
+   ```
 
 ✅ According to [The Spruce Eats](https://www.thespruceeats.com/how-much-is-a-bushel-1389308), a bushel's weight depends on the type of produce, as it's a volume measurement. "A bushel of tomatoes, for example, is supposed to weigh 56 pounds... Leaves and greens take up more space with less weight, so a bushel of spinach is only 20 pounds." It's all pretty complicated! Let's not bother with making a bushel-to-pound conversion, and instead price by the bushel. All this study of bushels of pumpkins, however, goes to show how very important it is to understand the nature of your data!
 
@@ -155,25 +151,24 @@ Try to create some basic plots to display the new dataframe you just created. Wh
 
 1. Import Matplotlib at the top of the file, under the Pandas import:
 
-    ```python
-    import matplotlib.pyplot as plt
-    ```
+   ```python
+   import matplotlib.pyplot as plt
+   ```
+2. Rerun the entire notebook to refresh.
+3. At the bottom of the notebook, add a cell to plot the data as a box:
 
-1. Rerun the entire notebook to refresh.
-1. At the bottom of the notebook, add a cell to plot the data as a box:
+   ```python
+   price = new_pumpkins.Price
+   month = new_pumpkins.Month
+   plt.scatter(price, month)
+   plt.show()
+   ```
 
-    ```python
-    price = new_pumpkins.Price
-    month = new_pumpkins.Month
-    plt.scatter(price, month)
-    plt.show()
-    ```
+   ![A scatterplot showing price to month relationship](./images/scatterplot.png)
 
-    ![A scatterplot showing price to month relationship](./images/scatterplot.png)
+   Is this a useful plot? Does anything about it surprise you?
 
-    Is this a useful plot? Does anything about it surprise you?
-
-    It's not particularly useful as all it does is display in your data as a spread of points in a given month.
+   It's not particularly useful as all it does is display in your data as a spread of points in a given month.
 
 ### Make it useful
 
@@ -181,14 +176,14 @@ To get charts to display useful data, you usually need to group the data somehow
 
 1. Add a cell to create a grouped bar chart:
 
-    ```python
-    new_pumpkins.groupby(['Month'])['Price'].mean().plot(kind='bar')
-    plt.ylabel("Pumpkin Price")
-    ```
+   ```python
+   new_pumpkins.groupby(['Month'])['Price'].mean().plot(kind='bar')
+   plt.ylabel("Pumpkin Price")
+   ```
 
-    ![A bar chart showing price to month relationship](./images/barchart.png)
+   ![A bar chart showing price to month relationship](./images/barchart.png)
 
-    This is a more useful data visualization! It seems to indicate that the highest price for pumpkins occurs in September and October. Does that meet your expectation? Why or why not?
+   This is a more useful data visualization! It seems to indicate that the highest price for pumpkins occurs in September and October. Does that meet your expectation? Why or why not?
 
 ---
 
