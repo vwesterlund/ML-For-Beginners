@@ -14,9 +14,7 @@ Watch the video, then take the pre-lesson quiz
 
 Welcome to this course on classical machine learning! Whether you're completely new to this topic, or an experienced ML practitioner looking to brush up on an area, we're happy to have you join us! Your course organizers are [Cumhur Erkut](https://cerkut.github.io/), [Henrique G Debarba](mailto:hgd@create.aau.dk) and [George Palamas]()
 
-We want to create a launching spot for your ML study
-
-, respond to, and incorporate your [feedback](https://github.com/SMC-AAU-CPH/ML-For-Beginners/discussions).
+We want to create a launching spot for your ML study, respond to, and incorporate your [feedback](https://github.com/SMC-AAU-CPH/ML-For-Beginners/discussions).
 
 [![Introduction to ML](https://img.youtube.com/vi/h0e2HAPTGF4/0.jpg)](https://youtu.be/h0e2HAPTGF4 "Introduction to ML")
 
@@ -28,11 +26,17 @@ We want to create a launching spot for your ML study
 
 Before starting with this curriculum, you need to have your computer set up and ready to run notebooks locally.
 
-- **Configure your machine with these videos**. Use the following links to learn [how to install Python](https://youtu.be/CXZYvNRIAKM) in your system and [setup a text editor](https://youtu.be/EU8eayHWoZg) for development.
-- **Learn Python**. It's also recommended to have a basic understanding of [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-15963-cxa), a programming language useful for data scientists that we use in this course.
-- **Learn Node.js and JavaScript**. We also use JavaScript a few times in this course when building web apps, so you will need to have [node](https://nodejs.org) and [npm](https://www.npmjs.com/) installed, as well as [Visual Studio Code](https://code.visualstudio.com/) available for both Python and JavaScript development.
-- **Create a GitHub account**. Since you found us here on [GitHub](https://github.com), you might already have an account, but if not, create one and then fork this curriculum to use on your own. (Feel free to give us a star, too 😊)
-- **Explore Scikit-learn**. Familiarize yourself with [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), a set of ML libraries that we reference in these lessons.
+**Use package managers:** [Homebrew](https://brew.sh) for Mac, **[Chocolatey](https://chocolatey.org)** (or better [Windows Linux Subsytem (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install)) for Windows. 
+
+**Configure your machine with these videos**. Use the following links to learn [how to install Python](https://youtu.be/CXZYvNRIAKM) in your system and [setup a text editor](https://youtu.be/EU8eayHWoZg) for development.
+
+**Learn Python**. It's also recommended to have a basic understanding of [Python](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-15963-cxa), a programming language useful for data scientists that we use in this course.
+
+**Learn Node.js and JavaScript**. We also use JavaScript a few times in this course when building web apps, so you will need to have [node](https://nodejs.org) and [npm](https://www.npmjs.com/) installed, as well as [Visual Studio Code](https://code.visualstudio.com/) available for both Python and JavaScript development.
+
+**Create a GitHub account**. Since you found us here on [GitHub](https://github.com), you might already have an account, but if not, create one and then fork this curriculum to use on your own. (Feel free to give us a star, too 😊)
+
+**Explore Scikit-learn**. Familiarize yourself with [Scikit-learn](https://scikit-learn.org/stable/user_guide.html), a set of ML libraries that we reference in these lessons.
 
 ---
 
@@ -108,7 +112,7 @@ Machine learning, from a systems perspective, is defined as the creation of auto
 
 This motivation is loosely inspired by how the human brain learns certain things based on the data it perceives from the outside world.
 
-✅ Think for a minute why a business would want to try to use machine learning strategies vs. creating a hard-coded rules-based engine. 
+✅ Think for a minute why a business would want to try to use machine learning strategies vs. creating a hard-coded rules-based engine.
 
 ---
 
