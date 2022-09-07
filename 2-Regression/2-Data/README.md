@@ -1,4 +1,4 @@
-# Build a regression model using Scikit-learn: prepare and visualize data
+## Build a regression model using Scikit-learn: prepare and visualize data
 
 ![Data visualization infographic](./images/data-visualization.png)
 
@@ -17,7 +17,7 @@ In this lesson, you will learn:
 
 [![Preparing and Visualizing data](https://img.youtube.com/vi/11AnOn_OAcE/0.jpg)](https://youtu.be/11AnOn_OAcE "Preparing and Visualizing data video - Click to Watch!")
 
-> 🎥 Click the image above for a video covering key aspects of this lesson
+> 🎥 Click the image above for a video covering key aspects of this lesson (18 minutes)
 
 ## Asking the right question of your data
 

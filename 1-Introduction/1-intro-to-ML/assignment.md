@@ -8,4 +8,4 @@ A good and fast approach to learn the [fundamentals](https://madewithml.com/cour
 
 If you want to start from scratch instead, you can take this [Python Learning Path](https://docs.microsoft.com/learn/paths/python-language/?WT.mc_id=academic-15963-cxa), and get your systems setup by going through these introductory videos:
 
-https://www.youtube.com/playlist?list=PLlrxD0HtieHhS8VzuMCfQD4uJ9yne1mE6
+[https://www.youtube.com/playlist?list=PLlrxD0HtieHhS8VzuMCfQD4uJ9yne1mE6]()

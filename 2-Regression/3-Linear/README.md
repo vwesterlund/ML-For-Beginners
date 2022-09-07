@@ -98,9 +98,11 @@ Now that you have an understanding of the math behind linear regression, let's c
 
 From the previous lesson you have probably seen that the average price for different months looks like this:
 
-`<img alt="Average price by month" src="../2-Data/images/barchart.png" width="50%"/>`
+`<img alt="Average price by month" src="../2-Data/images/barchart.png" width="50%"/> `
 
 This suggests that there should be some correlation, and we can try training linear regression model to predict the relationship between `Month` and `Price`, or between `DayOfYear` and `Price`. Here is the scatter plot that shows the latter relationship:
+
+
 
 `<img alt="Scatter plot of Price vs. Day of Year" src="images/scatter-dayofyear.png" width="50%" />`
 
@@ -220,7 +222,7 @@ pipeline = make_pipeline(PolynomialFeatures(2), LinearRegression())
 pipeline.fit(X_train,y_train)
 ```
 
-Using `PolynomialFeatures(2)` means that we will include all second-degree polynomials from the input data. In our case it will just mean `DayOfYear<sup>`2`</sup>`, but given two input variables X and Y, this will add X`<sup>`2`</sup>`, XY and Y`<sup>`2`</sup>`. We may also use higher degree polynomials if we want.
+Using `PolynomialFeatures(2)` means that we will include all second-degree polynomials from the input data. In our case it will just mean `DayOfYear<sup>`2 `</sup>`, but given two input variables X and Y, this will add X `<sup>`2 `</sup>`, XY and Y `<sup>`2 `</sup>`. We may also use higher degree polynomials if we want.
 
 Pipelines can be used in the same manner as the original `LinearRegression` object, i.e. we can `fit` the pipeline, and then use `predict` to get the prediction results. Here is the graph showing test data, and the approximation curve:
 
