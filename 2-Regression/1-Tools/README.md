@@ -117,9 +117,9 @@ The built-in [diabetes dataset](https://scikit-learn.org/stable/datasets/toy_dat
 
 ✅ This dataset includes the concept of 'sex' as a feature variable important to research around diabetes. Many medical datasets include this type of binary classification. Think a bit about how categorizations such as this might exclude certain parts of a population from treatments.
 
-Now, load up the X and y data.
+Now, load up the $X$ and $y$ data.
 
-> 🎓 Remember, this is supervised learning, and we need a named 'y' target.
+> 🎓 Remember, this is supervised learning, and we need a named $y$ target.
 
 In a new code cell, load the diabetes dataset by calling `load_diabetes()`. The input `return_X_y=True` signals that `X` will be a data matrix, and `y` will be the regression target.
 
