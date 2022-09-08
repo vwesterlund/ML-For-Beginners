@@ -1,4 +1,4 @@
-# Build a regression model using Scikit-learn: regression four ways
+#### Build a regression model using Scikit-learn: regression four ways
 
 ![Linear vs polynomial regression infographic](./images/linear-polynomial.png)
 
@@ -56,13 +56,13 @@ We do so since we want to model a line that has the least cumulative distance fr
 >
 > ![calculate the slope](images/slope.png)
 >
-> First, calculate the slope `b`. Infographic by [Jen Looper](https://twitter.com/jenlooper)
+> *First, calculate the slope `b`. Infographic by [Jen Looper](https://twitter.com/jenlooper)*
 >
 > In other words, and referring to our pumpkin data's original question: "predict the price of a pumpkin per bushel by month", `X` would refer to the price and `Y` would refer to the month of sale.
 >
 > ![complete the equation](images/calculation.png)
 >
-> Calculate the value of Y. If you're paying around $4, it must be April! Infographic by [Jen Looper](https://twitter.com/jenlooper)
+> *Calculate the value of Y. If you're paying around $4, it must be April! Infographic by [Jen Looper](https://twitter.com/jenlooper)*
 >
 > The math that calculates the line must demonstrate the slope of the line, which is also dependent on the intercept, or where `Y` is situated when `X = 0`.
 >
@@ -98,14 +98,11 @@ Now that you have an understanding of the math behind linear regression, let's c
 
 From the previous lesson you have probably seen that the average price for different months looks like this:
 
-`<img alt="Average price by month" src="../2-Data/images/barchart.png" width="50%"/> `
+![Average price by month](../2-Data/images/barchart.png)
 
 This suggests that there should be some correlation, and we can try training linear regression model to predict the relationship between `Month` and `Price`, or between `DayOfYear` and `Price`. Here is the scatter plot that shows the latter relationship:
 
-
-
-`<img alt="Scatter plot of Price vs. Day of Year" src="images/scatter-dayofyear.png" width="50%" />`
-
+![Scatter plot of Price vs. Day of Year](images/scatter-dayofyear.png)
 It looks like there are different clusters of prices corresponding to different pumpkin varieties. To confirm this hypothesis, let's plot each pumpkin category using a different color. By passing an `ax` parameter to the `scatter` plotting function we can plot all points on the same graph:
 
 ```python
@@ -240,7 +237,7 @@ In the ideal world, we want to be able to predict prices for different pumpkin v
 
 Here you can see how average price depends on variety:
 
-`<img alt="Average price by variety" src="images/price-by-variety.png" width="50%" />`
+`images/price-by-variety.png`![Average price by variety](images/price-by-variety.png)
 
 To take variety into account, we first need to convert it to numeric form, or **encode** it. There are several way we can do it:
 

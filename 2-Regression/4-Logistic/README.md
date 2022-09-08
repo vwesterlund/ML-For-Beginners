@@ -185,7 +185,7 @@ Building a model to find these binary classification is surprisingly straightfor
    print('Accuracy: ', accuracy_score(y_test, predictions))
    ```
 
-   Take a look at your model's scoreboard. It's not too bad, considering you have only about 1000 rows of data:
+   Take a look at your model's scoreboard (revisit [Logistic Regression Evaluation for a refrsher](https://madewithml.com/courses/foundations/logistic-regression/#evaluation_1 "Precision, recall, etc")). It's not too bad, considering you have only about 1000 rows of data:
 
    ```output
                       precision    recall  f1-score   support
@@ -310,6 +310,6 @@ There's a lot more to unpack regarding logistic regression! But the best way to 
 
 Read the first few pages of [this paper from Stanford](https://web.stanford.edu/~jurafsky/slp3/5.pdf) on some practical uses for logistic regression. Think about tasks that are better suited for one or the other type of regression tasks that we have studied up to this point. What would work best?
 
-## Assignment
+## [x] Assignment
 
 [Retrying this regression](assignment.md)

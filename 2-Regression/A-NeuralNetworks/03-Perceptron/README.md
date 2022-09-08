@@ -61,7 +61,7 @@ The algorithm in Python looks like this:
 def train(positive_examples, negative_examples, num_iterations = 100, eta = 1):
 
     weights = [0,0,0] # Initialize weights (almost randomly :)
-    
+  
     for i in range(num_iterations):
         pos = random.choice(positive_examples)
         neg = random.choice(negative_examples)
@@ -93,7 +93,7 @@ To see how we can use perceptron to solve a toy problem as well as real-life pro
 
 Here's an interesting [article about perceptrons](https://towardsdatascience.com/what-is-a-perceptron-basics-of-neural-networks-c4cfea20c590) as well.
 
-## [Assignment](lab/README.md)
+## [x] [Assignment](lab/README.md)
 
 In this lesson, we have implemented a perceptron for binary classification task, and we have used it to classify between two handwritten digits. In this lab, you are asked to solve the problem of digit classification entirely, i.e. determine which digit is most likely to correspond to a given image.
 

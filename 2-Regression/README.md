@@ -6,7 +6,7 @@ In North America, pumpkins are often carved into scary faces for Halloween. Let'
 
 ![jack-o-lanterns](./images/jack-o-lanterns.jpg)
 
-> Photo by `<a href="https://unsplash.com/@teutschmann?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">`Beth Teutschmann`</a>` on `<a href="https://unsplash.com/s/photos/jack-o-lanterns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">`Unsplash`</a>`
+> Photo by `<a href="https://unsplash.com/@teutschmann?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">`Beth Teutschmann `</a>` on `<a href="https://unsplash.com/s/photos/jack-o-lanterns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">`Unsplash `</a>`
 
 ## What you will learn
 
@@ -29,7 +29,7 @@ In this group of lessons, you will get set up to begin machine learning tasks, i
 3. [Linear and polynomial regression](3-Linear/README.md)
 4. [Logistic regression](4-Logistic/README.md)
 
----
+⚠️ You may want to brush up your **🛠**[Foundations](https://madewithml.com/#foundations) on Pandas before entering.
 
 ### Credits
 
