@@ -1,14 +1,17 @@
 # Regression models for machine learning
+
 ## Regional topic: Regression models for pumpkin prices in North America 🎃
 
 In North America, pumpkins are often carved into scary faces for Halloween. Let's discover more about these fascinating vegetables!
 
 ![jack-o-lanterns](./images/jack-o-lanterns.jpg)
-> Photo by <a href="https://unsplash.com/@teutschmann?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Beth Teutschmann</a> on <a href="https://unsplash.com/s/photos/jack-o-lanterns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  
+
+> Photo by `<a href="https://unsplash.com/@teutschmann?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">`Beth Teutschmann `</a>` on `<a href="https://unsplash.com/s/photos/jack-o-lanterns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">`Unsplash `</a>`
+
 ## What you will learn
 
 [![Introduction to Regression](https://img.youtube.com/vi/5QnJtDad4iQ/0.jpg)](https://youtu.be/5QnJtDad4iQ "Regression Introduction video - Click to Watch!")
+
 > 🎥 Click the image above for a quick introduction video to this lesson
 
 The lessons in this section cover types of regression in the context of machine learning. Regression models can help determine the _relationship_ between variables. This type of model can predict values such as length, temperature, or age, thus uncovering relationships between variables as it analyzes data points.
@@ -26,7 +29,8 @@ In this group of lessons, you will get set up to begin machine learning tasks, i
 3. [Linear and polynomial regression](3-Linear/README.md)
 4. [Logistic regression](4-Logistic/README.md)
 
----
+⚠️ You may want to brush up your **🛠**[Foundations](https://madewithml.com/#foundations) on Pandas before entering.
+
 ### Credits
 
 "ML with regression" was written with ♥️ by [Jen Looper](https://twitter.com/jenlooper)

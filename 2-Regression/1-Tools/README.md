@@ -6,8 +6,6 @@
 
 ## [Pre-lecture quiz](https://gray-sand-07a10f403.1.azurestaticapps.net/quiz/9/)
 
-> ### [This lesson is available in R!](./solution/R/lesson_1-R.ipynb)
-
 ## Introduction
 
 In these four lessons, you will discover how to build regression models. We will discuss what these are for shortly. But before you do anything, make sure you have the right tools in place to start the process!
@@ -28,14 +26,12 @@ In this lesson, you will learn how to:
 1. **Install Python**. Ensure that [Python](https://www.python.org/downloads/) is installed on your computer. You will use Python for many data science and machine learning tasks. Most computer systems already include a Python installation. There are useful [Python Coding Packs](https://code.visualstudio.com/learn/educators/installers?WT.mc_id=academic-15963-cxa) available as well, to ease the setup for some users.
 
    Some usages of Python, however, require one version of the software, whereas others require a different version. For this reason, it's useful to work within a [virtual environment](https://docs.python.org/3/library/venv.html).
-
 2. **Install Visual Studio Code**. Make sure you have Visual Studio Code installed on your computer. Follow these instructions to [install Visual Studio Code](https://code.visualstudio.com/) for the basic installation. You are going to use Python in Visual Studio Code in this course, so you might want to brush up on how to [configure Visual Studio Code](https://docs.microsoft.com/learn/modules/python-install-vscode?WT.mc_id=academic-15963-cxa) for Python development.
 
    > Get comfortable with Python by working through this collection of [Learn modules](https://docs.microsoft.com/users/jenlooper-2911/collections/mp1pagggd5qrq7?WT.mc_id=academic-15963-cxa)
-
+   >
 3. **Install Scikit-learn**, by following [these instructions](https://scikit-learn.org/stable/install.html). Since you need to ensure that you use Python 3, it's recommended that you use a virtual environment. Note, if you are installing this library on a M1 Mac, there are special instructions on the page linked above.
-
-1. **Install Jupyter Notebook**. You will need to [install the Jupyter package](https://pypi.org/project/jupyter/).
+4. **Install Jupyter Notebook**. You will need to [install the Jupyter package](https://pypi.org/project/jupyter/).
 
 ## Your ML authoring environment
 
@@ -50,19 +46,17 @@ In this folder, you will find the file _notebook.ipynb_.
 1. Open _notebook.ipynb_ in Visual Studio Code.
 
    A Jupyter server will start with Python 3+ started. You will find areas of the notebook that can be `run`, pieces of code. You can run a code block, by selecting the icon that looks like a play button.
-
-1. Select the `md` icon and add a bit of markdown, and the following text **# Welcome to your notebook**.
+2. Select the `md` icon and add a bit of markdown, and the following text **# Welcome to your notebook**.
 
    Next, add some Python code.
-
-1. Type **print('hello notebook')** in the code block.
-1. Select the arrow to run the code.
+3. Type **print('hello notebook')** in the code block.
+4. Select the arrow to run the code.
 
    You should see the printed statement:
 
-    ```output
-    hello notebook
-    ```
+   ```output
+   hello notebook
+   ```
 
 ![VS Code with a notebook open](images/notebook.jpg)
 
@@ -76,7 +70,7 @@ Now that Python is set up in your local environment, and you are comfortable wit
 
 According to their [website](https://scikit-learn.org/stable/getting_started.html), "Scikit-learn is an open source machine learning library that supports supervised and unsupervised learning. It also provides various tools for model fitting, data preprocessing, model selection and evaluation, and many other utilities."
 
-In this course, you will use Scikit-learn and other tools to build machine learning models to perform what we call 'traditional machine learning' tasks. We have deliberately avoided neural networks and deep learning, as they are better covered in our forthcoming 'AI for Beginners' curriculum.
+In this course, you will use Scikit-learn and other tools to build machine learning models to perform what we call 'traditional machine learning' tasks. We will incorporate the 'AI for Beginners' material as long as our curriculum requires.
 
 Scikit-learn makes it straightforward to build models and evaluate them for use. It is primarily focused on using numeric data and contains several ready-made datasets for use as learning tools. It also includes pre-built models for students to try. Let's explore the process of loading prepackaged data and using a built in estimator  first ML model with Scikit-learn with some basic data.
 
@@ -123,32 +117,31 @@ The built-in [diabetes dataset](https://scikit-learn.org/stable/datasets/toy_dat
 
 ✅ This dataset includes the concept of 'sex' as a feature variable important to research around diabetes. Many medical datasets include this type of binary classification. Think a bit about how categorizations such as this might exclude certain parts of a population from treatments.
 
-Now, load up the X and y data.
+Now, load up the $X$ and $y$ data.
 
-> 🎓 Remember, this is supervised learning, and we need a named 'y' target.
+> 🎓 Remember, this is supervised learning, and we need a named $y$ target.
 
 In a new code cell, load the diabetes dataset by calling `load_diabetes()`. The input `return_X_y=True` signals that `X` will be a data matrix, and `y` will be the regression target.
 
 1. Add some print commands to show the shape of the data matrix and its first element:
 
-    ```python
-    X, y = datasets.load_diabetes(return_X_y=True)
-    print(X.shape)
-    print(X[0])
-    ```
+   ```python
+   X, y = datasets.load_diabetes(return_X_y=True)
+   print(X.shape)
+   print(X[0])
+   ```
 
-    What you are getting back as a response, is a tuple. What you are doing is to assign the two first values of the tuple to `X` and `y` respectively. Learn more [about tuples](https://wikipedia.org/wiki/Tuple).
+   What you are getting back as a response, is a **tuple**. What you are doing is to assign the two first values of the tuple to `X` and `y` respectively. Learn more [about tuples](https://wikipedia.org/wiki/Tuple).
 
-    You can see that this data has 442 items shaped in arrays of 10 elements:
+   You can see that this data has 442 items shaped in arrays of 10 elements:
 
-    ```text
-    (442, 10)
-    [ 0.03807591  0.05068012  0.06169621  0.02187235 -0.0442235  -0.03482076
-    -0.04340085 -0.00259226  0.01990842 -0.01764613]
-    ```
+   ```text
+   (442, 10)
+   [ 0.03807591  0.05068012  0.06169621  0.02187235 -0.0442235  -0.03482076
+   -0.04340085 -0.00259226  0.01990842 -0.01764613]
+   ```
 
-    ✅ Think a bit about the relationship between the data and the regression target. Linear regression predicts relationships between feature X and target variable y. Can you find the [target](https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset) for the diabetes dataset in the documentation? What is this dataset demonstrating, given that target?
-
+   ✅ Think a bit about the relationship between the data and the regression target. Linear regression predicts relationships between feature X and target variable y. Can you find the [target](https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset) for the diabetes dataset in the documentation? What is this dataset demonstrating, given that target?
 2. Next, select a portion of this dataset to plot by arranging it into a new array using numpy's `newaxis` function. We are going to use linear regression to generate a line between values in this data, according to a pattern it determines.
 
    ```python
@@ -156,38 +149,34 @@ In a new code cell, load the diabetes dataset by calling `load_diabetes()`. The 
    ```
 
    ✅ At any time, print out the data to check its shape.
-
 3. Now that you have data ready to be plotted, you can see if a machine can help determine a logical split between the numbers in this dataset. To do this, you need to split both the data (X) and the target (y) into test and training sets. Scikit-learn has a straightforward way to do this; you can split your test data at a given point.
 
    ```python
    X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.33)
    ```
-
 4. Now you are ready to train your model! Load up the linear regression model and train it with your X and y training sets using `model.fit()`:
 
-    ```python
-    model = linear_model.LinearRegression()
-    model.fit(X_train, y_train)
-    ```
+   ```python
+   model = linear_model.LinearRegression()
+   model.fit(X_train, y_train)
+   ```
 
-    ✅ `model.fit()` is a function you'll see in many ML libraries such as TensorFlow
-
+   ✅ `model.fit()` is a function you'll see in many ML libraries such as TensorFlow
 5. Then, create a prediction using test data, using the function `predict()`. This will be used to draw the line between data groups
 
-    ```python
-    y_pred = model.predict(X_test)
-    ```
-
+   ```python
+   y_pred = model.predict(X_test)
+   ```
 6. Now it's time to show the data in a plot. Matplotlib is a very useful tool for this task. Create a scatterplot of all the X and y test data, and use the prediction to draw a line in the most appropriate place, between the model's data groupings.
 
-    ```python
-    plt.scatter(X_test, y_test,  color='black')
-    plt.plot(X_test, y_pred, color='blue', linewidth=3)
-    plt.xlabel('Scaled BMIs')
-    plt.ylabel('Disease Progression')
-    plt.title('A Graph Plot Showing Diabetes Progression Against BMI')
-    plt.show()
-    ```
+   ```python
+   plt.scatter(X_test, y_test,  color='black')
+   plt.plot(X_test, y_pred, color='blue', linewidth=3)
+   plt.xlabel('Scaled BMIs')
+   plt.ylabel('Disease Progression')
+   plt.title('A Graph Plot Showing Diabetes Progression Against BMI')
+   plt.show()
+   ```
 
    ![a scatterplot showing datapoints around diabetes](./images/scatterplot.png)
 
@@ -196,17 +185,19 @@ In a new code cell, load the diabetes dataset by calling `load_diabetes()`. The 
 Congratulations, you built your first linear regression model, created a prediction with it, and displayed it in a plot!
 
 ---
+
 ## 🚀Challenge
 
 Plot a different variable from this dataset. Hint: edit this line: `X = X[:, np.newaxis, 2]`. Given this dataset's target, what are you able to discover about the progression of diabetes as a disease?
+
 ## [Post-lecture quiz](https://gray-sand-07a10f403.1.azurestaticapps.net/quiz/10/)
 
 ## Review & Self Study
 
-In this tutorial, you worked with simple linear regression, rather than univariate or multiple linear regression. Read a little about the differences between these methods, or take a look at [this video](https://www.coursera.org/lecture/quantifying-relationships-regression-models/linear-vs-nonlinear-categorical-variables-ai2Ef)
+In this tutorial, you worked with simple linear regression, rather than univariate or multiple linear regression. Read a little about the differences between these methods, or take a look at [this video](https://www.coursera.org/lecture/quantifying-relationships-regression-models/linear-vs-nonlinear-categorical-variables-ai2Ef) (8 mins).
 
-Read more about the concept of regression and think about what kinds of questions can be answered by this technique. Take this [tutorial](https://docs.microsoft.com/learn/modules/train-evaluate-regression-models?WT.mc_id=academic-15963-cxa) to deepen your understanding.
+Read more about the concept of regression and think about what kinds of questions can be answered by this technique. Take this [tutorial](https://docs.microsoft.com/learn/modules/train-evaluate-regression-models?WT.mc_id=academic-15963-cxa) to deepen your understanding (52 mins).
 
-## Assignment
+## [x] Assignment
 
 [A different dataset](assignment.md)
