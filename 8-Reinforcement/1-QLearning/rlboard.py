@@ -157,10 +157,10 @@ class Board:
 
         # Draw grid
         for i in range(self.height+1):
-            img[:,i*self.size] = 0.3
+            img[i*self.size, :] = 0.3
             #cv2.line(img,(0,i*self.size),(self.width*self.size,i*self.size), self.grid_color, self.grid_thickness,lineType=self.grid_line_type)
         for j in range(self.width+1):
-            img[j*self.size,:] = 0.3
+            img[:, j*self.size] = 0.3
             #cv2.line(img,(j*self.size,0),(j*self.size,self.height*self.size), self.grid_color, self.grid_thickness,lineType=self.grid_line_type)
         return img
 
