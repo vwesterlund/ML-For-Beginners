@@ -47,6 +47,7 @@ class Board:
         wolf = 2
         tree = 3
         apple = 4
+        grey = 5
     def __init__(self,width,height,size=50):
         self.width = width
         self.height = height
@@ -157,11 +158,9 @@ class Board:
 
         # Draw grid
         for i in range(self.height+1):
-            img[:,i*self.size] = 0.3
-            #cv2.line(img,(0,i*self.size),(self.width*self.size,i*self.size), self.grid_color, self.grid_thickness,lineType=self.grid_line_type)
+            img[i*self.size, :] = 0.3 # instead of img[:, i*self.size] = 0.3
         for j in range(self.width+1):
-            img[j*self.size,:] = 0.3
-            #cv2.line(img,(j*self.size,0),(j*self.size,self.height*self.size), self.grid_color, self.grid_thickness,lineType=self.grid_line_type)
+            img[:, j*self.size] = 0.3 # instead of img[j*self.size, :] = 0.3 
         return img
 
     def plot(self,Q=None):

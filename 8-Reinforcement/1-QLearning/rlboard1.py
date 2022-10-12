@@ -47,6 +47,7 @@ class Board:
         wolf = 2
         tree = 3
         apple = 4
+        grey = 5
     def __init__(self,width,height,size=50):
         self.width = width
         self.height = height
@@ -129,7 +130,7 @@ class Board:
     def image(self,Q=None):
         img = np.zeros((self.height*self.size+1,self.width*self.size+1,3))
         img[:,:,:] = self.background_color
-        # Draw water
+        # Draw board
         for x in range(self.width):
             for y in range(self.height):
                 if (x,y) == self.human:
@@ -154,14 +155,15 @@ class Board:
                         dy += ddy*p[i]
                         l = draw_line(dx,dy,self.size)
                         img[self.size*y+2:self.size*y+l.shape[0]+2,self.size*x+2:self.size*x+2+l.shape[1],:] = l
+                if self.matrix[x,y] == Board.Cell.grey:
+                    img[self.size*y:self.size*(y+1),self.size*x:self.size*(x+1),:] = (0.6,0.6,0.6)
+
 
         # Draw grid
         for i in range(self.height+1):
-            img[i*self.size, :] = 0.3
-            #cv2.line(img,(0,i*self.size),(self.width*self.size,i*self.size), self.grid_color, self.grid_thickness,lineType=self.grid_line_type)
+            img[i*self.size, :] = 0.3 # instead of img[:, i*self.size] = 0.3
         for j in range(self.width+1):
-            img[:, j*self.size] = 0.3
-            #cv2.line(img,(j*self.size,0),(j*self.size,self.height*self.size), self.grid_color, self.grid_thickness,lineType=self.grid_line_type)
+            img[:, j*self.size] = 0.3 # instead of img[j*self.size, :] = 0.3 
         return img
 
     def plot(self,Q=None):
@@ -186,10 +188,12 @@ class Board:
                 return n # success!
             if self.at() in [Board.Cell.wolf, Board.Cell.water]:
                 return -1 # eaten by wolf or drowned
+            if self.at() in [Board.Cell.grey]:
+                return 0
             while True:
                 a = policy(self)
                 new_pos = self.move_pos(self.human,a)
-                if self.is_valid(new_pos) and self.at(new_pos)!=Board.Cell.water:
+                if self.is_valid(new_pos) and self.at(new_pos)!=Board.Cell.grey:
                     self.move(a) # do the actual move
                     break
             n+=1
